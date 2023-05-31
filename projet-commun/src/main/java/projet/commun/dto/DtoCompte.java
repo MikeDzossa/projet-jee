@@ -19,8 +19,7 @@ public class DtoCompte implements Serializable  {
 	
 	private String		email;
 	
-	private List<String> roles = new ArrayList<>();
-	
+	private List<String> roles = new ArrayList<>();	
 	
 	// Constructeurs
 	
@@ -44,6 +43,7 @@ public class DtoCompte implements Serializable  {
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public String getPseudo() {
 		return pseudo;
@@ -77,7 +77,6 @@ public class DtoCompte implements Serializable  {
 		this.roles = roles;
 	}
 
-	
 	public boolean isInRole( String role ) {
 		
 		if ( role != null ) {

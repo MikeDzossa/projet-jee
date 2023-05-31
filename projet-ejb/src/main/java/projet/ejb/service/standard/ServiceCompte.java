@@ -14,6 +14,7 @@ import projet.commun.dto.DtoCompte;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceCompte;
 import projet.ejb.dao.IDaoCompte;
+import projet.ejb.dao.IDaoPersonne;
 import projet.ejb.data.Compte;
 import projet.ejb.data.mapper.IMapperEjb;
 
@@ -26,6 +27,8 @@ public class ServiceCompte implements IServiceCompte {
 	private IMapperEjb mapper;
 	@Inject
 	private IDaoCompte daoCompte;
+	@Inject
+	private IDaoPersonne daoPersonne;
 
 	// Actions
 
@@ -44,6 +47,9 @@ public class ServiceCompte implements IServiceCompte {
 
 	@Override
 	public void supprimer(int idCompte) throws ExceptionValidation {
+		if (daoPersonne.compterPourCompte(idCompte) != 0) {
+			throw new ExceptionValidation("Ce compte est attaché à une personne");
+		}
 		daoCompte.supprimer(idCompte);
 	}
 
@@ -78,7 +84,7 @@ public class ServiceCompte implements IServiceCompte {
 		} else if (!daoCompte.verifierUnicitePseudo(dtoCompte.getPseudo(), dtoCompte.getId())) {
 			message.append("\nLe pseudo " + dtoCompte.getPseudo() + " est déjà utilisé.");
 		}
-
+		
 		if (dtoCompte.getMotDePasse() == null || dtoCompte.getMotDePasse().isEmpty()) {
 			message.append("\nLe mot de passe est absent.");
 		} else if (dtoCompte.getMotDePasse().length() < 3) {

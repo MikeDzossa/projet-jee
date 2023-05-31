@@ -9,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+
 @SuppressWarnings("serial")
 public class Compte implements Serializable  {
 
@@ -20,7 +21,7 @@ public class Compte implements Serializable  {
 	@NotBlank( message = "Le pseudo doit être renseigné")
 	@Size(max=25, message = "Valeur trop longue pour le pseuo : 25 car. maxi" )
 	private String		pseudo;
-
+	
 	@NotBlank( message = "Le mot de passe doit être renseigné")
 	@Size(max=25, message = "Valeur trop longue pour le mot de passe : 25 car. maxi" )
 	private String		motDePasse;
@@ -31,6 +32,7 @@ public class Compte implements Serializable  {
 	private String		email;
 	
 	private List<String> roles = new ArrayList<>();	
+	
 
 	
 	// Constructeurs
@@ -94,6 +96,11 @@ public class Compte implements Serializable  {
 		return roles.contains( role );
 	}
 
+	
+	@Override
+	public String toString() {
+		return pseudo;
+	}
 	
 	// hashCode() & equals()
 

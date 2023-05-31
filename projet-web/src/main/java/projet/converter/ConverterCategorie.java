@@ -33,7 +33,7 @@ public class ConverterCategorie implements Converter<Categorie> {
 			}
 		}
 
-		var id = Integer.valueOf("x"+value);
+		var id = Integer.valueOf(value);
 		for (Categorie item : items) {
 			if (item.getId().equals(id)) {
 				return item;

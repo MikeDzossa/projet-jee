@@ -52,10 +52,10 @@ public class ModelConnexion {
 //			} catch (ServletException e) {
 //				throw new RuntimeException( e );
 //			}
-
+	    	compteActif.setId(dto.getId());
 	        compteActif.setPseudo( dto.getPseudo() );
 	        compteActif.setRoles( dto.getRoles() );
-	        
+//	        System.out.println("ID Actif : "+ compteActif.getId());
 	    	modelInfo.setTitre( "Bienvenue" );
 	    	modelInfo.setTexte( "Vous êtes connecté en tant que '" + courant.getPseudo() +"'.");
 		    return "info";

@@ -1,7 +1,6 @@
 package projet.jsf.data;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.validation.constraints.NotBlank;
@@ -19,8 +18,6 @@ public class Categorie implements Serializable {
 	@NotBlank( message = "Le libellé doit être renseigné")
 	@Size(max=25, message = "Valeur trop longue pour le libellé : 25 car. maxi" )
     private String      	libelle;
-	
-	private LocalDate		debut;
     
     
     // Constructeurs
@@ -53,13 +50,6 @@ public class Categorie implements Serializable {
         this.libelle = libelle;
     }
     
-    public LocalDate getDebut() {
-		return debut;
-	}
-    
-    public void setDebut(LocalDate debut) {
-		this.debut = debut;
-	}
 
     
     // toString()

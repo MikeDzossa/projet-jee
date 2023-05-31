@@ -42,7 +42,6 @@ public class Compte  {
 	@Column( name = "role")
 	private List<String> roles = new ArrayList<>();	
 	
-	
 	// Constructeurs
 	
 	public Compte() {
@@ -97,8 +96,14 @@ public class Compte  {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
+	
+	
 
-    
+	@Override
+	public String toString() {
+		return pseudo;
+	}
+	
 	// equals() et hashcode()
 
 	@Override

@@ -24,13 +24,25 @@
 
 <div id="header">
 	<h:outputText value="&nbsp;" rendered="#{not compteActif.loggedIn}" />
+	<h:graphicImage alt="logo" value="#{ resource['images:logo.png'] }" height="100" />
+	<br />
 	<h:form rendered="#{compteActif.loggedIn}">
-		<h:link outcome="comptes" value="Personnes" rendered="#{compteActif.utilisateur }" />
 		<h:panelGroup rendered="#{compteActif.admininstrateur}">
-			<h:link outcome="comptes" value="Catégories"  />
-			<h:link outcome="comptes" value="Comptes"  />
+		<div id="adminPane">
+			<h:link outcome="categories" value="Catégories"  />
+			<h:link outcome="auteurs" value="Auteurs"  />
+			<h:link outcome="editeurs" value="Editeurs"  />
+			<h:link outcome="ouvrages" value="Ouvrages"  />
+			<h:link outcome="personnes" value="Personnes"  />
+		</div>
 		</h:panelGroup>
-		<h:commandLink action="#{compteActif.disconnect()}" value="Déconnexion"  />
+		<br />
+		<h:panelGroup rendered="#{compteActif.utilisateur }" >
+			<h:link outcome="amis" value="Amis" />
+			<h:link outcome="personnes" value="Emprunts" />
+			<h:link outcome="mesOuvrages" value="Mes Ouvrages" />
+			<h:commandLink action="#{compteActif.disconnect()}" value="Déconnexion"  />
+		</h:panelGroup>
 	</h:form>
 </div>
 

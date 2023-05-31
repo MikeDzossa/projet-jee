@@ -1,34 +1,47 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/template/page-standard.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
-     xmlns:ui="http://java.sun.com/jsf/facelets"
-     template="/template/page-standard.xhtml" >
+     xmlns:ui="http://java.sun.com/jsf/facelets">
 
-     <ui:define name="titre">Liste des comptes</ui:define>
+     <ui:define name="titre">Mes Ouvrages</ui:define>
 
     <ui:define name="contenu">
 
 	<h:form>
 
 		<h:dataTable styleClass="liste" 
-			value="#{modelCompte.liste}" var="item" 
-			rowClasses="impair, pair" columnClasses="left,left,center"
+			value="#{modelPersonne.utilisateurActif.ouvrages}" var="item" 
+			rowClasses="impair, pair" columnClasses="left,left,left,left,center"
 		>
+			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Psudo" />
+					<h:outputText value="Titre" />
 				</f:facet>
-				#{item.pseudo}
+				#{item.titre}
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Rôles" />
+					<h:outputText value="Auteur" />
 				</f:facet>
-				<ui:repeat value="#{item.roles}" var="role" varStatus="status" >
-					#{utilAppli.getLibelléDeRole(role)}#{not status.last ? ', ' : ''}
-				</ui:repeat>
+				#{item.auteur.nom}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editeur" />
+				</f:facet>
+				#{item.editeur.nom}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Catégorie" />
+				</f:facet>
+				#{item.categorie.libelle}
 			</h:column>
 			
 			<h:column>
@@ -41,7 +54,7 @@
 					title="Modifier" 
 					styleClass="image-action"
 				/>
-				<h:commandButton action="#{modelCompte.supprimer(item)}" 
+				<h:commandButton action="#{modelPersonne.supprimerOuvrage(item)}" 
 					value="Supprimer" 
 					onclick="return confirm('Confirmez-vous la suppression ?')" 
 					image="#{ resource['images:supprimer.png'] }" 
@@ -51,7 +64,7 @@
 					<f:ajax render="@form" execute="@form" />				
 				</h:commandButton>
 			</h:column>
-			
+
 		</h:dataTable>
 		
 		<br />

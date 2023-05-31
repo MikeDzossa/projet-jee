@@ -87,5 +87,6 @@ public class DaoCompte implements IDaoCompte {
 	    query.setParameter( "idCompte", idCompte );
         return query.getSingleResult() == 0;
 	}
+
 	
 }

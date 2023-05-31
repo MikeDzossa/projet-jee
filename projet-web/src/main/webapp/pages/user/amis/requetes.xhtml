@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     template="/template/page-standard.xhtml" >
+
+     <ui:define name="titre">Mes requetes d'amitier</ui:define>
+
+    <ui:define name="contenu">
+
+	<h:form>
+
+		<h:dataTable styleClass="liste" 
+			value="#{modelPersonne.requetes}" var="item" 
+			rowClasses="impair, pair" columnClasses="left,left,center"
+		>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Pseudo" />
+				</f:facet>
+				#{item.compte.pseudo}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Prenom + Nom" />
+				</f:facet>
+				#{item.prenom} #{item.nom}
+			</h:column>	
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Actions" />
+				</f:facet>
+				<h:commandButton action="#{modelPersonne.supprimerRequete(item)}" 
+					value="Refuser" 
+					onclick="return confirm('Supprimer votre requête ?')" 
+					image="#{ resource['images:supprimer.png'] }" 
+					title="Refuser"
+					styleClass="image-action"
+				>
+					<f:ajax render="@form" execute="@form" />				
+				</h:commandButton>
+			</h:column>
+			
+		</h:dataTable>
+		
+		<br />
+		<h:button value="Retour" outcome="etrangers" />
+
+	</h:form>
+
+	</ui:define>
+
+</ui:composition>

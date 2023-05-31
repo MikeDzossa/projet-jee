@@ -9,12 +9,36 @@
    <redirect/>
   </navigation-case>
   <navigation-case>
-   <from-outcome>comptes</from-outcome>
-   <to-view-id>/pages/admin/compte/liste.xhtml</to-view-id>
+   <from-outcome>personnes</from-outcome>
+   <to-view-id>/pages/admin/personne/liste.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>info</from-outcome>
    <to-view-id>/pages/info.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>categories</from-outcome>
+   <to-view-id>/pages/admin/categorie/liste.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>editeurs</from-outcome>
+   <to-view-id>/pages/admin/editeur/liste.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>auteurs</from-outcome>
+   <to-view-id>/pages/admin/auteur/liste.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>ouvrages</from-outcome>
+   <to-view-id>/pages/admin/ouvrage/liste.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>amis</from-outcome>
+   <to-view-id>/pages/user/amis/liste.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>mesOuvrages</from-outcome>
+   <to-view-id>/pages/user/ouvrages/mesOuvrages/liste.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <application/>

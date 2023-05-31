@@ -1,0 +1,82 @@
+package projet.jsf.data;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+
+@SuppressWarnings("serial")
+public class Editeur implements Serializable {
+
+	
+	// Champs
+
+    private Integer        	id;
+    
+	@NotBlank( message = "Le nom doit être renseigné")
+	@Size(max=25, message = "Valeur trop longue pour le nom : 25 car. maxi" )
+    private String      	nom;
+    
+    
+    // Constructeurs
+    
+    public Editeur() {
+	}
+
+    public Editeur(Integer id, String nom) {
+		super();
+		this.id = id;
+		this.nom = nom;
+	}
+    
+    
+    // Getters & setters
+
+	public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    
+
+    
+    // toString()
+    
+	@Override
+	public String toString() {
+		return nom;
+	}
+
+	
+	// hashCode() & equals()
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		var other = (Editeur) obj;
+		return Objects.equals(id, other.id);
+	}
+
+}

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     template="/template/page-standard.xhtml" >
+
+     <ui:define name="titre">Mes demandes d'amitier</ui:define>
+
+    <ui:define name="contenu">
+
+	<h:form>
+
+		<h:dataTable styleClass="liste" 
+			value="#{modelPersonne.demandes}" var="item" 
+			rowClasses="impair, pair" columnClasses="left,left,center"
+		>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Pseudo" />
+				</f:facet>
+				#{item.compte.pseudo}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Prenom + Nom" />
+				</f:facet>
+				#{item.prenom} #{item.nom}
+			</h:column>					
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Actions" />
+				</f:facet>
+				<h:commandButton action="#{modelPersonne.accepterDemande(item)}" 
+					value="Accepter" 
+					onclick="return confirm('Vous acceptez l'amitié ?')" 
+					image="#{ resource['images:accept.png'] }" 
+					title="Accepter"
+					styleClass="image-action"
+				>
+				</h:commandButton>
+				<h:commandButton action="#{modelPersonne.refuserDemande(item)}" 
+					value="Refuser" 
+					onclick="return confirm('Vous refusez l'amitié ?')" 
+					image="#{ resource['images:supprimer.png'] }" 
+					title="Refuser"
+					styleClass="image-action"
+				>
+					<f:ajax render="@form" execute="@form" />				
+				</h:commandButton>
+			</h:column>
+			
+		</h:dataTable>
+		
+		<br />
+		<h:button value="Retour" outcome="amis" />
+
+	</h:form>
+
+	</ui:define>
+
+</ui:composition>

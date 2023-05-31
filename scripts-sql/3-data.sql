@@ -2,10 +2,10 @@ SET search_path TO projet;
 
 
 -- Supprime toutes les données
-DELETE FROM emprunter;
-DELETE FROM posseder;
-DELETE FROM etreami;
+DELETE FROM emprunt;
+DELETE FROM amitie;
 DELETE FROM ouvrage;
+DELETE FROM personne;
 DELETE FROM editeur;
 DELETE FROM auteur;
 DELETE FROM categorie;
@@ -17,10 +17,10 @@ DELETE FROM compte;
 
 -- Compte
 
-INSERT INTO compte (idcompte, pseudo, nom, prenom, motdepasse, email ) VALUES 
-( 1, 'geek', 'Force', 'Geek', 'geek', 'geek@jfox.fr' ),
-( 2, 'chef', 'Cha', 'Chef', 'chef', 'chef@jfox.fr' ),
-( 3, 'job', 'Doe', 'Job','job', 'job@jfox.fr' );
+INSERT INTO compte (idcompte, pseudo, motdepasse, email ) VALUES 
+( 1, 'geek', 'geek', 'geek@jfox.fr' ),
+( 2, 'chef', 'chef', 'chef@jfox.fr' ),
+( 3, 'job', 'job', 'job@jfox.fr' );
 
 ALTER TABLE compte ALTER COLUMN idcompte RESTART WITH 4;
 
@@ -60,35 +60,37 @@ INSERT INTO editeur (idediteur, nom) VALUES
 
 ALTER TABLE editeur ALTER COLUMN idediteur RESTART WITH 3;
 
+-- Personne
+
+INSERT INTO personne (idpersonne, nom, prenom, datenaissance, idcompte) VALUES 
+(1, 'Force', 'Geek', {d '2001-01-28' }, 1),
+(2, 'Cha', 'Chef', {d '2010-08-31' }, 2),
+(3, 'Doe', 'Job', {d '2008-03-11' }, 3);
+
+ALTER TABLE personne ALTER COLUMN idpersonne RESTART WITH 4;
 
 -- Ouvrage
 
-INSERT INTO ouvrage (idouvrage, titre, idcategorie, idediteur, idauteur) VALUES 
-(1, 'Au dela des mers', 1, 1, 1),
-(2, 'Big bang', 2, 2, 2);
+INSERT INTO ouvrage (idouvrage, titre, idcategorie, idediteur, idauteur, idproprietaire) VALUES 
+(1, 'Au dela des mers', 1, 1, 1, 1),
+(2, 'Big bang', 2, 2, 2, 2);
 
 ALTER TABLE ouvrage ALTER COLUMN idouvrage RESTART WITH 3;
 
 
--- EtreAmi
+-- Amitie
 
-INSERT INTO etreAmi (iddemandeur, idrecepteur, statut) VALUES
-(1, 2, 'P'),
-(2, 1, 'P'),
-(1, 3, 'V'),
-(3, 1, 'V');
-
-
--- Posseder
-
-INSERT INTO posseder (idcompte, idouvrage) VALUES
-(2, 2),
+INSERT INTO amitie (idutilisateur, idami) VALUES
 (1, 2),
-(1, 1);
+(2, 1),
+(1, 3),
+(3, 1),
+(2, 3);
 
 
--- Emprunter
+-- Emprunt
 
-INSERT INTO emprunter (idemprunteur, idouvrage, idproprietaire) VALUES
-(3, 1, 1);
+INSERT INTO emprunt (idemprunteur, idouvrage) VALUES
+(3, 1),
+(3, 2);
  
