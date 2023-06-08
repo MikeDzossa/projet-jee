@@ -27,7 +27,7 @@ public class Ouvrage  {
 	@Column( name = "titre")
 	private String		titre;
 	
-	@ManyToOne( fetch = FetchType.LAZY )
+	@ManyToOne( fetch = FetchType.EAGER )
 	@JoinColumn( name = "idcategorie" )
 	private Categorie		categorie;
 	

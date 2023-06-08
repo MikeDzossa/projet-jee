@@ -219,6 +219,11 @@ public class ModelPersonne implements Serializable {
 	
 	public String validerOperation() {
 		try {
+			for(Ouvrage o : utilisateurActif.getOuvrages() ) {
+				Personne p = new Personne();
+				p.setId(utilisateurActif.getId());
+				o.setProprietaire(p);
+			}
 			servicePersonne.modifier( mapper.map(utilisateurActif) );
 			UtilJsf.messageInfo( "Mise à jour effectuée avec succès." );
 			return "liste";

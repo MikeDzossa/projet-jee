@@ -100,4 +100,12 @@ public class ModelOuvrage implements Serializable {
 		return null;
 	}
 	
+	public String getRandomImage() {
+        // Generate a random image URL or fetch it from an external service
+		int id = (int) (Math.random()*50);
+        String imageUrl = "https://picsum.photos/30/30?random="+id;
+        
+        return imageUrl;
+    }
+	
 }

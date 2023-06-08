@@ -4,6 +4,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,6 +19,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.PostLoad;
 import javax.persistence.Table;
 
 
@@ -58,6 +62,7 @@ public class Personne {
 				inverseJoinColumns = @JoinColumn( name = "idutilisateur") )
 	private List<Personne> demandesAmis = new ArrayList<>();
 	
+//	@OrderBy("titre ASC") 
 	@OneToMany( mappedBy = "proprietaire",
 				fetch = FetchType.LAZY,
 				cascade = CascadeType.ALL,
@@ -151,10 +156,15 @@ public class Personne {
 		return this.prenom + " " + this.nom;
 	}
 	
+// Other attributes and methods
+    
+	@PostLoad
+	public void sortOuvragesByCategorieAndTitre() {
+	    Collections.sort(ouvrages, Comparator.comparing(o -> o.getCategorie().getLibelle()));
+//	    Collections.sort(ouvrages, Comparator.comparing(Ouvrage::getTitre));
+	}
 	
 	// hashcode() + equals()
-	
-	
 
 	@Override
 	public int hashCode() {

@@ -40,9 +40,6 @@ public interface IMapperEjb {
 	DtoCompte map(Compte source);
 
 	// Personne
-	@Mapping(target = "demandesAmis", ignore = true)
-	@Mapping(target = "requetesAmis", ignore = true)
-	@Mapping(target = "ouvrages", ignore = true)
 	Personne map(DtoPersonne source);
 
 	@Mapping(target = "demandesAmis", ignore = true)
@@ -75,7 +72,7 @@ public interface IMapperEjb {
 	@ListMapping
 	DtoOuvrage map( Ouvrage source );
 	
-	@Mapping( target="categorie", ignore = true )
+	@Mapping( target="categorie", ignore = false )
 	@Mapping( target="auteur", ignore = false )
 	@Mapping( target="editeur", ignore = true )
 	@Mapping( target="proprietaire", ignore = true )

@@ -13,10 +13,16 @@
 
 		<h:dataTable styleClass="liste" 
 			value="#{modelPersonne.utilisateurActif.ouvrages}" var="item" 
-			rowClasses="impair, pair" columnClasses="left,left,left,left,center"
+			rowClasses="impair, pair" columnClasses="center,left,left,left,left,center"
 		>
-			
-			<h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Banner" />
+					</f:facet>
+					<h:graphicImage value="#{modelOuvrage.getRandomImage()}"
+						alt="Random Image" />
+				</h:column>
+				<h:column>
 				<f:facet name="header">
 					<h:outputText value="Titre" />
 				</f:facet>

@@ -13,7 +13,7 @@
 
 		<h:dataTable styleClass="liste" 
 			value="#{modelOuvrage.liste}" var="item" 
-			rowClasses="impair, pair" columnClasses="center,left,left,center"
+			rowClasses="impair, pair" columnClasses="center,center,left,center,left,center"
 		>
 			<h:column>
 				<f:facet name="header">
@@ -21,12 +21,27 @@
 				</f:facet>
 				#{item.id}
 			</h:column>
-			
-			<h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Banner" />
+					</f:facet>
+					<h:graphicImage value="#{modelOuvrage.getRandomImage()}"
+						alt="Random Image" />
+				</h:column>
+
+				<h:column>
 				<f:facet name="header">
 					<h:outputText value="Titre" />
 				</f:facet>
 				#{item.titre}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Categorie" />
+				</f:facet>
+				#{item.categorie.libelle}
 			</h:column>
 			
 			<h:column>
