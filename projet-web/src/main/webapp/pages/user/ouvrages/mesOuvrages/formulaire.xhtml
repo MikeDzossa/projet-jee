@@ -8,6 +8,9 @@
 	 <f:metadata>
 		 <f:viewParam name="id" value="#{modelOuvrage.courant.id}" />
 		 <f:viewAction action="#{modelOuvrage.actualiserCourant()}" />
+		 <f:viewAction action="#{modelAuteur.initCourant()}" />
+		 <f:viewAction action="#{modelEditeur.initCourant()}" />
+		 <f:viewAction action="#{modelCategorie.initCourant()}" />
 	 </f:metadata>
 
     <ui:define name="head">
@@ -21,43 +24,48 @@
 	<h:form>
 		<table class="form">
 			<tr>
-				<td style="text-align: right">
+				<td  style="text-align: right; padding-right: 10px;">
 					<h:outputLabel for="id">Id :</h:outputLabel>				
 				</td>
-				<td>
+				<td  style="text-align: right; padding-right: 10px;">
 					<h:inputText id="id" size="5" readonly="true"
 						value="#{modelOuvrage.courant.id}" />
 					<br /><h:message for="id" errorClass="error"/>
 				</td>
 			</tr>
 			<tr>
-				<td style="text-align: right">
+				<td  style="text-align: right; padding-right: 10px;">
 					<h:outputLabel for="titre">Titre :</h:outputLabel>				
 				</td>
-				<td>
+				<td  style="text-align: right; padding-right: 10px;">
 					<h:inputText id="titre" size="25" 
 						value="#{modelOuvrage.courant.titre}" />
 					<br /><h:message for="titre" errorClass="error"/>
 				</td>
 			</tr>	
 			<tr>
-				<td style="text-align: right">
+				<td  style="text-align: right; padding-right: 10px;">
 					<h:outputLabel for="auteur">Auteur :</h:outputLabel>				
 				</td>
-				<td>
+				<td style="text-align: right; padding-right: 10px;">
 					<h:selectOneMenu id="auteur" 
 						value="#{modelOuvrage.courant.auteur}" 
 						converter="#{converterAuteur}">
 						<f:selectItems value="#{modelAuteur.liste}"  />
 					</h:selectOneMenu>
-					<br /><h:message for="auteur" errorClass="error"/>
+				<br /><h:message for="auteur" errorClass="error"/>
+				</td>
+				<td  style="text-align: right; padding-right: 10px;">
+					<h:inputText id="newAuteur" size="15" style="text-align: center;" 
+							value="#{modelAuteur.courant.nom}" />
+					<h:commandButton value="Ajouter" action="#{modelAuteur.ajouter()}"/>
 				</td>
 			</tr>	
 			<tr>
-				<td style="text-align: right">
+				<td  style="text-align: right; padding-right: 10px;">
 					<h:outputLabel for="editeur">Editeur :</h:outputLabel>				
 				</td>
-				<td>
+				<td  style="text-align: right; padding-right: 10px;">
 					<h:selectOneMenu id="editeur" 
 						value="#{modelOuvrage.courant.editeur}" 
 						converter="#{converterEditeur}">
@@ -65,12 +73,17 @@
 					</h:selectOneMenu>
 					<br /><h:message for="editeur" errorClass="error"/>
 				</td>
+				<td  style="text-align: right; padding-right: 10px;">
+					<h:inputText id="newEditeur" size="15" style="text-align: center;" 
+							value="#{modelEditeur.courant.nom}" />
+					<h:commandButton value="Ajouter" action="#{modelEditeur.ajouter()}"/>
+				</td>
 			</tr>	
 			<tr>
-				<td style="text-align: right">
+				<td  style="text-align: right; padding-right: 10px;">
 					<h:outputLabel for="categorie">Categorie :</h:outputLabel>				
 				</td>
-				<td>
+				<td  style="text-align: right; padding-right: 10px;">
 					<h:selectOneMenu id="categorie" 
 						value="#{modelOuvrage.courant.categorie}" 
 						converter="#{converterCategorie}">
@@ -78,20 +91,26 @@
 					</h:selectOneMenu>
 					<br /><h:message for="categorie" errorClass="error"/>
 				</td>
+				<td  style="text-align: right; padding-right: 10px;">
+					<h:inputText id="newCategorie" size="15" style="text-align: center;" 
+							value="#{modelCategorie.courant.libelle}" />
+					<h:commandButton value="Ajouter" action="#{modelCategorie.ajouter()}" />
+				</td>
 			</tr>
 			<tr>
-				<td style="text-align: right">
+				<td  style="text-align: right; padding-right: 10px;">
 					<h:outputLabel for="proprietaire">Propriétaire :</h:outputLabel>				
 				</td>
-				<td>
+				<td  style="text-align: right; padding-right: 10px;">
 					<h:outputLabel for="proprietaire">#{modelPersonne.utilisateurActif}</h:outputLabel>
 				</td>
 			</tr>
 		</table>
 		
 		<br /> 
-		<h:commandButton value="Valider" 
-			action="#{modelPersonne.miseAJourOuvrage()}" />
+		<h:commandButton value="Valider" action="#{modelPersonne.miseAJourOuvrage()}" > 
+			<!-- <f:ajax render="@form" execute="@form" /> -->
+		</h:commandButton>
 		<h:button value="Retour" outcome="mesOuvrages" />
 	</h:form>
 

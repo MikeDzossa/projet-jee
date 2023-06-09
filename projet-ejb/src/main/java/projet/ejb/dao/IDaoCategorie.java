@@ -17,4 +17,6 @@ public interface IDaoCategorie {
 
 	List<Categorie> listerTout();
 
+	boolean verifierUniciteLibelle(String libelle, int idCategorie);
+
 }

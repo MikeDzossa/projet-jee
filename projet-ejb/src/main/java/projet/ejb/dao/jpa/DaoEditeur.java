@@ -61,4 +61,14 @@ public class DaoEditeur implements IDaoEditeur {
 		return query.getResultList();
 	}
 	
+	@Override
+	@TransactionAttribute( NOT_SUPPORTED )
+	public boolean verifierUniciteNom( String nom, int idEditeur )  {
+	    var jpql = "SELECT COUNT(e) FROM Editeur e WHERE e.nom=:nom AND e.id <> :idEditeur ";
+	    var query = em.createQuery( jpql, Long.class );
+	    query.setParameter( "nom", nom );
+	    query.setParameter( "idEditeur", idEditeur );
+        return query.getSingleResult() == 0;
+	}
+	
 }

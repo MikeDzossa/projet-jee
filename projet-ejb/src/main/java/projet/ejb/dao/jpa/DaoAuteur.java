@@ -61,4 +61,14 @@ public class DaoAuteur implements IDaoAuteur {
 		return query.getResultList();
 	}
 	
+	@Override
+	@TransactionAttribute( NOT_SUPPORTED )
+	public boolean verifierUniciteNom( String nom, int idAuteur )  {
+	    var jpql = "SELECT COUNT(a) FROM Auteur a WHERE a.nom=:nom AND a.id <> :idAuteur ";
+	    var query = em.createQuery( jpql, Long.class );
+	    query.setParameter( "nom", nom );
+	    query.setParameter( "idAuteur", idAuteur );
+        return query.getSingleResult() == 0;
+	}
+	
 }

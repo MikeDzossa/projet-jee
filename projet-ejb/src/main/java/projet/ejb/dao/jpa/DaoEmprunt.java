@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 
 import projet.ejb.dao.IDaoEmprunt;
 import projet.ejb.data.Emprunt;
-import projet.ejb.data.Personne;
+
 
 
 @Stateless

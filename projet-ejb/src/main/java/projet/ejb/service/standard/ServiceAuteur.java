@@ -81,6 +81,8 @@ public class ServiceAuteur implements IServiceAuteur {
 			message.append("\nLe nom est trop court.");
 		} else if (dtoAuteur.getNom().length() > 25) {
 			message.append("\nLe nom est trop long.");
+		} else if (!daoAuteur.verifierUniciteNom(dtoAuteur.getNom(), dtoAuteur.getId())) {
+			message.append("\nLe nom " + dtoAuteur.getNom() + " est déjà utilisé.");
 		}
 
 		if (message.length() > 0) {

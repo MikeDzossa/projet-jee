@@ -46,7 +46,8 @@ public class ModelEmprunt implements Serializable {
 		if ( liste == null ) {
 			liste = new ArrayList<>();
 			for ( DtoEmprunt dto : serviceEmprunt.listerPourEmprunteur(modelPersonne.getUtilisateurActif().getId()) ) {
-				liste.add( mapper.map( dto ) );
+				if( dto.isValider())
+					liste.add( mapper.map( dto ) );
 			}
 		}
 		return liste;
@@ -56,9 +57,9 @@ public class ModelEmprunt implements Serializable {
 		if ( demandes == null ) {
 			demandes = new ArrayList<>();
 			for ( Ouvrage o : modelPersonne.getUtilisateurActif().getOuvrages() ) {
-				System.out.println(o.getTitre());
+//				System.out.println(o.getTitre());
 				for(DtoEmprunt dto : serviceEmprunt.listerPourOuvrage(o.getId())) {
-					System.out.println(" Un emprunt trouvé");
+//					System.out.println(" Un emprunt trouvé");
 					demandes.add( mapper.map( dto ) );
 				}
 			}
@@ -126,19 +127,20 @@ public class ModelEmprunt implements Serializable {
 			courant = null;
 	}
 	
-	public void validerEmprunt( Emprunt item ) {
-		courant = item;
-		validerMiseAJour();
+	public void validerEmprunt() {
+		for(Emprunt e : demandes ) {
+			courant = e;
+			validerMiseAJour();
+		}
 	}
 	
 	boolean verifieruniciterEmprunt(Emprunt emprunt) {
-		for(Emprunt e : getListe()) {
-			if(e.getOuvrage().getId() == emprunt.getOuvrage().getId()) {
+		for( DtoEmprunt dto : serviceEmprunt.listerPourEmprunteur(modelPersonne.getUtilisateurActif().getId()) ) {
+			if( dto.getOuvrage().getId() == emprunt.getOuvrage().getId() ) {
 				UtilJsf.messageError( "vous avez déjà acces à cet Ouvrage" );
 				return false;
 			}
 		}
-		System.out.println(" ----- Je ne suis pas dans la liste ");
 		return true;
 	}
 }

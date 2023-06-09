@@ -57,7 +57,13 @@ public class ModelCategorie implements Serializable {
 	
 	
 	// Initialisaitons
-	
+
+	public void initCourant() {
+		courant = new Categorie();
+		courant.setLibelle( "/" );
+		System.out.println( " _______  Initialisation réusite ____________ ");
+	}
+		
 	public String actualiserCourant() {
 		if ( courant != null ) {
 			DtoCategorie dto = serviceCategorie.retrouver( courant.getId() ); 
@@ -84,7 +90,7 @@ public class ModelCategorie implements Serializable {
 			UtilJsf.messageInfo( "Mise à jour effectuée avec succès." );
 			return "liste";
 		} catch (ExceptionValidation e) {
-			UtilJsf.messageError(e);
+			UtilJsf.messageError(e.getLocalizedMessage());
 			return null;
 		}
 	}
@@ -98,6 +104,15 @@ public class ModelCategorie implements Serializable {
 			UtilJsf.messageError( e );
 		}
 		return null;
+	}
+	
+	// Autres actions
+	public void ajouter() {
+		if (courant != null) {
+			System.out.println(" ---- Je m'ajoute ---------");
+			validerMiseAJour();
+			liste = null;
+		}
 	}
 	
 }

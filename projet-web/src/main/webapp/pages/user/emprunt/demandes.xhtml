@@ -38,30 +38,17 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Actions" />
+					<h:outputText value="Valider" />
 				</f:facet>
-				<h:button
-					outcome="formulaire?id=#{item.id}"
-					image="#{ resource['images:voir.png'] }"
-					title="Consulter" 
-					styleClass="image-action"
-				/>
-				<h:commandButton action="#{modelAuteur.supprimer(item)}" 
-					value="Supprimer" 
-					onclick="return confirm('Confirmez-vous la suppression ?')" 
-					image="#{ resource['images:supprimer.png'] }" 
-					title="Supprimer"
-					styleClass="image-action"
-				>
-					<f:ajax render="@form" execute="@form" />				
-				</h:commandButton>
+				<h:selectBooleanCheckbox value="#{item.valider}" />				
 			</h:column>
 
 		</h:dataTable>
 		
 		<br />
 		
-		<h:commandButton value="Valider" outcome="liste" />
+		<h:commandButton action="#{modelEmprunt.validerEmprunt()}" value="Valider" />
+		<h:button value="Retour" outcome="liste" />
 	</h:form>
 	
 	</ui:define>

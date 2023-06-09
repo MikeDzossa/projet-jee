@@ -9,13 +9,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.hibernate.validator.cfg.defs.EmailDef;
-
 import projet.commun.dto.DtoPersonne;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServicePersonne;
 import projet.jsf.data.Compte;
-import projet.jsf.data.Emprunt;
 import projet.jsf.data.Ouvrage;
 import projet.jsf.data.Personne;
 import projet.jsf.data.mapper.IMapper;
@@ -274,6 +271,8 @@ public class ModelPersonne implements Serializable {
 		if(!getUtilisateurActif().getOuvrages().contains(item)) {
 			item.setProprietaire(utilisateurActif);
 		}
+		System.out.println(" ---- Je m'ajoute ---------");
+
 		return modelOuvrage.validerMiseAJour();
 	}
 	

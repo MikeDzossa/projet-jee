@@ -81,6 +81,8 @@ public class ServiceCategorie implements IServiceCategorie {
 			message.append("\nLe libellé est trop court.");
 		} else if (dtoCategorie.getLibelle().length() > 25) {
 			message.append("\nLe libellé est trop long.");
+		} else if (!daoCategorie.verifierUniciteLibelle(dtoCategorie.getLibelle(), dtoCategorie.getId())) {
+			message.append("\nLe libelle " + dtoCategorie.getLibelle() + " est déjà utilisé.");
 		}
 
 		if (message.length() > 0) {

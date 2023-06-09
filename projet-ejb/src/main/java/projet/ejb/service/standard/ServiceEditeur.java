@@ -81,6 +81,8 @@ public class ServiceEditeur implements IServiceEditeur {
 			message.append("\nLe nom est trop court.");
 		} else if (dtoEditeur.getNom().length() > 25) {
 			message.append("\nLe nom est trop long.");
+		} else if (!daoEditeur.verifierUniciteNom(dtoEditeur.getNom(), dtoEditeur.getId())) {
+			message.append("\nLe nom " + dtoEditeur.getNom() + " est déjà utilisé.");
 		}
 
 		if (message.length() > 0) {

@@ -17,4 +17,6 @@ public interface IDaoAuteur {
 
 	List<Auteur> listerTout();
 
+	boolean verifierUniciteNom(String nom, int idAuteur);
+
 }

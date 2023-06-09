@@ -24,7 +24,7 @@ VALUES
   (2, 'lee', 'lee', 'lee@3il.fr'),
   (3, 'chang', 'chang', 'chang@3il.fr'),
   (4, 'garcia', 'garcia', 'garcia@3il.fr'),
-  (5, 'Lopez', 'lopez', 'lopez@3il.fr'),
+  (5, 'lopez', 'lopez', 'lopez@3il.fr'),
   (6, 'martin', 'martin', 'martin@3il.fr'),
   (7, 'nguyen', 'nguyen', 'nguyen@3il.fr'),
   (8, 'kumar', 'kumar', 'kumar@3il.fr'),

@@ -61,4 +61,14 @@ public class DaoCategorie implements IDaoCategorie {
 		return query.getResultList();
 	}
 	
+	@Override
+	@TransactionAttribute( NOT_SUPPORTED )
+	public boolean verifierUniciteLibelle( String libelle, int idCategorie )  {
+	    var jpql = "SELECT COUNT(c) FROM Categorie c WHERE c.libelle=:libelle AND c.id <> :idCategorie ";
+	    var query = em.createQuery( jpql, Long.class );
+	    query.setParameter( "libelle", libelle );
+	    query.setParameter( "idCategorie", idCategorie );
+        return query.getSingleResult() == 0;
+	}
+	
 }

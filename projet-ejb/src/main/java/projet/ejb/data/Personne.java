@@ -49,13 +49,14 @@ public class Personne {
 	@JoinColumn( name = "idcompte" )
 	private Compte 			compte;
 	
-	
+	@OrderBy("nom ASC") 
 	@ManyToMany( fetch = FetchType.LAZY)
 	@JoinTable( name = "amitie",
 				joinColumns = @JoinColumn(name = "idutilisateur"),
 				inverseJoinColumns = @JoinColumn( name = "idami") )
 	private List<Personne> requetesAmis = new ArrayList<>();
 	
+	@OrderBy("nom ASC") 
 	@ManyToMany( fetch = FetchType.LAZY )
 	@JoinTable( name = "amitie",
 				joinColumns = @JoinColumn(name = "idami"),

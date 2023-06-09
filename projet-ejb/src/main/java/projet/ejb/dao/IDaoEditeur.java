@@ -17,4 +17,6 @@ public interface IDaoEditeur {
 
 	List<Editeur> listerTout();
 
+	boolean verifierUniciteNom(String nom, int idEditeur);
+
 }

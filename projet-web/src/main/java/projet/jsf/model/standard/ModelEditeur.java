@@ -12,6 +12,7 @@ import javax.inject.Named;
 import projet.commun.dto.DtoEditeur;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceEditeur;
+
 import projet.jsf.data.Editeur;
 import projet.jsf.data.mapper.IMapper;
 import projet.jsf.util.UtilJsf;
@@ -57,6 +58,11 @@ public class ModelEditeur implements Serializable {
 	
 	
 	// Initialisaitons
+
+	public void initCourant() {
+		courant = new Editeur();
+		courant.setNom( "/" );
+	}
 	
 	public String actualiserCourant() {
 		if ( courant != null ) {
@@ -84,7 +90,7 @@ public class ModelEditeur implements Serializable {
 			UtilJsf.messageInfo( "Mise à jour effectuée avec succès." );
 			return "liste";
 		} catch (ExceptionValidation e) {
-			UtilJsf.messageError(e);
+			UtilJsf.messageError(e.getLocalizedMessage() );
 			return null;
 		}
 	}
@@ -98,6 +104,15 @@ public class ModelEditeur implements Serializable {
 			UtilJsf.messageError( e );
 		}
 		return null;
+	}
+	
+	// Autres actions
+	public void ajouter() {
+		if (courant != null) {
+			System.out.println(" ---- Je m'ajoute ---------");
+			validerMiseAJour();
+			liste = null;
+		}
 	}
 	
 }
