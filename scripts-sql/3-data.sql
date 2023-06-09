@@ -2,8 +2,8 @@ SET search_path TO projet;
 
 
 -- Supprime toutes les données
-DELETE FROM emprunt;
 DELETE FROM amitie;
+DELETE FROM emprunt;
 DELETE FROM ouvrage;
 DELETE FROM personne;
 DELETE FROM editeur;
@@ -187,6 +187,21 @@ VALUES
 ALTER TABLE ouvrage ALTER COLUMN idouvrage RESTART WITH 46;
 
 
+
+-- Emprunt
+
+INSERT INTO emprunt (idemprunt, idemprunteur, idouvrage, valider) VALUES
+(1, 3, 1, true),
+(2, 3, 2, true),
+(3, 1, 3, true),
+(4, 1, 5, true),
+(5, 1, 6, false),
+(6, 1, 8, false);
+
+ALTER TABLE emprunt ALTER COLUMN idemprunt RESTART WITH 7;
+
+
+
 -- Amitie
 
 INSERT INTO amitie (idutilisateur, idami) VALUES
@@ -197,9 +212,5 @@ INSERT INTO amitie (idutilisateur, idami) VALUES
 (2, 3);
 
 
--- Emprunt
 
-INSERT INTO emprunt (idemprunteur, idouvrage) VALUES
-(3, 1),
-(3, 2);
  
