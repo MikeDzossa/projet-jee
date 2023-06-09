@@ -1,6 +1,8 @@
 package projet.jsf.data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -30,8 +32,39 @@ public class Ouvrage implements Serializable  {
 	
 	@NotNull( message = "Le proprietaire est obligatoire")
 	private Personne		proprietaire;
+	
+
+	private List<Ouvrage> demandesOuvrage = new ArrayList<>();
+	
+	private List<Ouvrage> requetesOuvrage = new ArrayList<>();
+	
+	private List<Personne> personnes = new ArrayList<>();
 	// Constructeurs
 	
+	public List<Ouvrage> getDemandesOuvrage() {
+		return demandesOuvrage;
+	}
+
+	public void setDemandesOuvrage(List<Ouvrage> demandesOuvrage) {
+		this.demandesOuvrage = demandesOuvrage;
+	}
+
+	public List<Ouvrage> getRequetesOuvrage() {
+		return requetesOuvrage;
+	}
+
+	public void setRequetesOuvrage(List<Ouvrage> requetesOuvrage) {
+		this.requetesOuvrage = requetesOuvrage;
+	}
+
+	public List<Personne> getPersonnes() {
+		return personnes;
+	}
+
+	public void setPersonnes(List<Personne> personnes) {
+		this.personnes = personnes;
+	}
+
 	public Ouvrage() {
 	}
 

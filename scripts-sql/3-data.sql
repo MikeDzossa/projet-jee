@@ -196,9 +196,11 @@ INSERT INTO emprunt (idemprunt, idemprunteur, idouvrage, valider) VALUES
 (3, 1, 3, true),
 (4, 1, 5, true),
 (5, 1, 6, false),
-(6, 1, 8, false);
+(6, 2, 1, false),
+(7, 5, 2, true),
+(8, 1, 8, false);
 
-ALTER TABLE emprunt ALTER COLUMN idemprunt RESTART WITH 7;
+ALTER TABLE emprunt ALTER COLUMN idemprunt RESTART WITH 9;
 
 
 

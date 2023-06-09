@@ -18,12 +18,14 @@ import projet.commun.dto.DtoAuteur;
 import projet.commun.dto.DtoCategorie;
 import projet.commun.dto.DtoCompte;
 import projet.commun.dto.DtoEditeur;
+import projet.commun.dto.DtoEmprunt;
 import projet.commun.dto.DtoOuvrage;
 import projet.commun.dto.DtoPersonne;
 import projet.ejb.data.Auteur;
 import projet.ejb.data.Categorie;
 import projet.ejb.data.Compte;
 import projet.ejb.data.Editeur;
+import projet.ejb.data.Emprunt;
 import projet.ejb.data.Ouvrage;
 import projet.ejb.data.Personne;
 
@@ -64,6 +66,13 @@ public interface IMapperEjb {
 	Auteur map( DtoAuteur source );
 			
 	DtoAuteur map( Auteur source );
+	
+	
+	//Emprungt
+	
+	Emprunt map( DtoEmprunt source );
+	
+	DtoEmprunt map( Emprunt source );
 	
 	// Ouvrage
 	

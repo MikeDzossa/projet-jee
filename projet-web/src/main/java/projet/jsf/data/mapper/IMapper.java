@@ -9,12 +9,14 @@ import projet.commun.dto.DtoAuteur;
 import projet.commun.dto.DtoCategorie;
 import projet.commun.dto.DtoCompte;
 import projet.commun.dto.DtoEditeur;
+import projet.commun.dto.DtoEmprunt;
 import projet.commun.dto.DtoOuvrage;
 import projet.commun.dto.DtoPersonne;
 import projet.jsf.data.Auteur;
 import projet.jsf.data.Categorie;
 import projet.jsf.data.Compte;
 import projet.jsf.data.Editeur;
+import projet.jsf.data.Emprunt;
 import projet.jsf.data.Ouvrage;
 import projet.jsf.data.Personne;
 
@@ -64,6 +66,14 @@ public interface IMapper {
 	DtoAuteur map( Auteur source );
 	
 	Auteur duplicate( Auteur source );
+	
+	//Emprunt
+	
+	Emprunt   map( DtoEmprunt source );
+	
+	DtoEmprunt map( Emprunt source );
+	
+	Emprunt duplicate( Emprunt source );
 	
 	// Ouvrage
 	
